@@ -20,6 +20,7 @@ public class Program
             Console.WriteLine("Eternal Quest Program");
             Console.WriteLine($"Total Points: {goalManager.TotalPoints}");
             goalManager.DisplayGoals();
+            Console.WriteLine("---------------");
             Console.WriteLine("1. Create New Goal");
             Console.WriteLine("2. List Goals");
             Console.WriteLine("3. Save Goals");

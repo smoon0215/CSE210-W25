@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-
-public class SimpleGoal : Goal 
+public class SimpleGoal : Goal
 {
-    public bool Completed {get; set;}
+    public bool Completed { get; set; }
 
-    public SimpleGoal(string description, int points){
-        Description = description;
-        Points = points;
+    public SimpleGoal(string description, int points) : base(description, points)
+    {
         Completed = false;
     }
 
@@ -16,6 +11,6 @@ public class SimpleGoal : Goal
 
     public override void RecordProgress()
     {
-        Completed = true; 
+        Completed = true;
     }
 }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 public class GoalManager
 {
-    public List<IGoal> Goals { get; private set; }
+    public List<Goal> Goals { get; private set; }
     public int TotalPoints { get; set; }
 
     public GoalManager()
     {
-        Goals = new List<IGoal>();
+        Goals = new List<Goal>();
         TotalPoints = 0;
     }
 
-    public void AddGoal(IGoal goal)
+    public void AddGoal(Goal goal)
     {
         Goals.Add(goal);
     }
@@ -31,10 +31,13 @@ public class GoalManager
     {
         for (int i = 0; i < Goals.Count; i++)
         {
-            Console.WriteLine("Goals:");
             var goal = Goals[i];
-            Console.WriteLine($"{i + 1}. {goal.Description} - {(goal.IsComplete() ? "[X]" : "[ ]")} - {goal.Points} points");
-            Console.WriteLine();
+            string status = goal.IsComplete() ? "[X]" : "[ ]";
+            string progress = goal is ChecklistGoal checklistGoal
+                ? $"Completed {checklistGoal.CurrentCount}/{checklistGoal.TargetCount} times"
+                : string.Empty;
+
+            Console.WriteLine($"{i + 1}. {goal.Description} - {status} - {goal.Points} points {progress}");
         }
     }
 }

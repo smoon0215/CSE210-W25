@@ -4,11 +4,12 @@ using System.IO;
 
 public class FileHandler
 {
-    public void SaveGoals(List<IGoal> goals, int totalPoints){
+    public void SaveGoals(List<Goal> goals, int totalPoints)
+    {
         using (StreamWriter outputFile = new StreamWriter("goals.txt"))
         {
-            foreach (var goal in goals){
-                
+            foreach (var goal in goals)
+            {
                 string goalType = goal.GetType().Name;
                 string goalData = goal switch
                 {
@@ -23,9 +24,9 @@ public class FileHandler
         }
     }
 
-    public (List<IGoal>, int) LoadGoals(){
-
-        var goals = new List<IGoal>();
+    public (List<Goal>, int) LoadGoals()
+    {
+        var goals = new List<Goal>();
         int totalPoints = 0;
 
         if (File.Exists("goals.txt"))
@@ -39,16 +40,16 @@ public class FileHandler
                     {
                         totalPoints = points;
                     }
-                    else 
+                    else
                     {
-                        string[] parts = line.Split(';');
+                        string[] parts = line.Split(':');
                         string goalType = parts[0];
                         string[] data = parts[1].Split(',');
 
                         switch (goalType)
                         {
                             case nameof(SimpleGoal):
-                                goals.Add(new SimpleGoal(data[0], int.Parse(data[1])));
+                                goals.Add(new SimpleGoal(data[0], int.Parse(data[1])) { Completed = bool.Parse(data[2]) });
                                 break;
                             case nameof(EternalGoal):
                                 goals.Add(new EternalGoal(data[0], int.Parse(data[1])));
@@ -65,5 +66,4 @@ public class FileHandler
         }
         return (goals, totalPoints);
     }
-
 }
