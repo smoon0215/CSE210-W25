@@ -1,19 +1,19 @@
-public class Order
-{
-    private List<Product> _products;
+public class Order{
+    
+        private List<Product> _products;
     private Customer _customer;
 
+    // Constructor to initialize Order with a Customer
     public Order(Customer customer)
     {
-        this._customer = customer;
-        this._products = new List<Product>();
+        _customer = customer;
+        _products = new List<Product>();
     }
 
-    public void AddProduct(Product product)
-    {
-        _products.Add(product);
-    }
+    // Method to add a product to the order
+    public void AddProduct(Product product) => _products.Add(product);
 
+    // Method to calculate total cost of the order (including shipping)
     public double GetTotalCost()
     {
         double totalProductCost = 0;
@@ -22,10 +22,12 @@ public class Order
             totalProductCost += product.GetTotalCost();
         }
 
-        double shippingCost = _customer.InUSA() ? 5.0 : 35.0;
+        // Shipping cost based on customer's location
+        double shippingCost = _customer.IsInUSA() ? 5.0 : 35.0;
         return totalProductCost + shippingCost;
     }
 
+    // Method to generate the packing label for the order
     public string GetPackingLabel()
     {
         string label = "Packing Label:\n";
@@ -36,19 +38,9 @@ public class Order
         return label;
     }
 
+    // Method to generate the shipping label for the order
     public string GetShippingLabel()
     {
         return $"Shipping Label:\n{_customer.Name}\n{_customer.Address.GetFullAddress()}";
-    }
-
-    public List<Product> Products
-    {
-        get { return _products; }
-    }
-
-    public Customer Customer
-    {
-        get { return _customer; }
-        set { _customer = value; }
     }
 }

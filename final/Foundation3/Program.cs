@@ -1,3 +1,5 @@
+// I used ChatGPT to help with some structure and basic guidance, but implementation and adjustments were made based on what I’ve learned during the course.
+
 using System;
 
 public class Program

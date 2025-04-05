@@ -1,23 +1,23 @@
 public class Comment
 {
-    private string commenterName;
-    private string commentText;
+    public string CommenterName {get; set;}
+    public string CommentText {get; set;}
 
     public Comment(string commenterName, string commentText)
     {
-        this.commenterName = commenterName;
-        this.commentText = commentText;
+        CommenterName = commenterName;
+        CommentText = commentText;
     }
 
-    public string CommenterName
-    {
-        get { return commenterName; }
-        set { commenterName = value; }
-    }
+    // public string CommenterName
+    // {
+    //     get { return commenterName; }
+    //     set { commenterName = value; }
+    // }
 
-    public string CommentText
-    {
-        get { return commentText; }
-        set { commentText = value; }
-    }
+    // public string CommentText
+    // {
+    //     get { return commentText; }
+    //     set { commentText = value; }
+    // }
 }

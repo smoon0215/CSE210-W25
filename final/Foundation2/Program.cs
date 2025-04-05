@@ -1,3 +1,5 @@
+// I used ChatGPT to help with some structure and basic guidance, but implementation and adjustments were made based on what I’ve learned during the course.
+
 using System;
 using System.Collections.Generic;
 
@@ -30,15 +32,16 @@ public class Program
         order2.AddProduct(product4);
         order2.AddProduct(product5);
 
-        // Display Order 1 Information
-        Console.WriteLine(order1.GetPackingLabel());
-        Console.WriteLine(order1.GetShippingLabel());
-        Console.WriteLine($"Total Order 1 Cost: ${order1.GetTotalCost()}");
-        Console.WriteLine();
+        DisplayOrderInfo(order1);
+        DisplayOrderInfo(order2);
+    }
 
-        // Display Order 2 Information
-        Console.WriteLine(order2.GetPackingLabel());
-        Console.WriteLine(order2.GetShippingLabel());
-        Console.WriteLine($"Total Order 2 Cost: ${order2.GetTotalCost()}");
+    public static void DisplayOrderInfo(Order order){
+
+        // Display Order 1 Information
+        Console.WriteLine(order.GetPackingLabel());
+        Console.WriteLine(order.GetShippingLabel());
+        Console.WriteLine($"Total Order 1 Cost: ${order.GetTotalCost()}");
+        Console.WriteLine();
     }
 }
